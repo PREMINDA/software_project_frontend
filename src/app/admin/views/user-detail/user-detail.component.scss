@@ -1,1 +1,18 @@
+.mat-form-field {
+  width: 580px !important;
+  margin-right: 20px;
+}
 
+.form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.container{
+  height: 100% !important;
+}
+
+.mat-label{
+  font-size: medium;
+}

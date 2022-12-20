@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {config} from '../../../config';
 import {UserModal} from '../user-list-view/user.modal';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-user-detail',
@@ -21,7 +22,8 @@ export class UserDetailComponent implements OnInit {
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
     form: FormGroup;
   }
@@ -68,10 +70,17 @@ export class UserDetailComponent implements OnInit {
   }
 
   goBack() {
-
+    this.location.back();
   }
 
   onSubmit(form: FormGroup) {
-
+    this.loader = true;
+    this.user = form.value as UserModal;
+    this.http.put(`${config.organization}/User/${this.id}`,this.user).subscribe(
+      res=>{
+        this.loader = false;
+        this.router.navigate([`app/users/organization`]);
+      }
+    )
   }
 }

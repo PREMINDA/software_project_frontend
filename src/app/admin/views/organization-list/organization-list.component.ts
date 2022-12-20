@@ -32,12 +32,12 @@ export class OrganizationListComponent implements OnInit {
 
   openPreview(element : Organization){
     console.log(element.organizationName)
-    this.router.navigate([`app/user-edit/${element.id}`]);
+    this.router.navigate([`app/admin/user-edit/${element.id}`]);
   }
 
   selectOrganization(element: any) {
     console.log(element)
-    this.router.navigate([`app/organization/${element.id}`]);
+    this.router.navigate([`app/admin/organization/${element.id}`]);
   }
 
   organizationDelete(element: Organization) {

@@ -69,7 +69,7 @@ export class OrganizationEditComponent implements OnInit {
     this.http.put(`${config.organization}/Organization/${this.id}`,this.organization).subscribe(
       res=>{
         this.loader = false;
-        this.router.navigate([`app/organization`]);
+        this.router.navigate([`app/admin/organization`]);
       }
     )
   }

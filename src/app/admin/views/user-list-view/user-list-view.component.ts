@@ -32,7 +32,7 @@ export class UserListViewComponent implements OnInit {
 
   openPreview(element : UserModal){
     console.log(element.nationalId)
-    this.router.navigate([`app/user-detail/${element.id}`]);
+    this.router.navigate([`app/admin/user-detail/${element.id}`]);
   }
 
 }
