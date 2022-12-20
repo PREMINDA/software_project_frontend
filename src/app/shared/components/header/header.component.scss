@@ -1,0 +1,12 @@
+mat-toolbar{
+  background-color: #cc2222;
+  display: flex;
+  justify-content: space-between;
+
+  .site-title{
+    color: white;
+  }
+  //.example-spacer {
+  //  flex: 1 1 auto;
+  //}
+}

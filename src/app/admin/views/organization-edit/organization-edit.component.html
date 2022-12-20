@@ -1,0 +1,26 @@
+<app-spinner *ngIf="loader"></app-spinner>
+<div [className]="'container'">
+    <form [className]="'form-container'" action="" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Organization Name</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="organizationName">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Organization Type</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="organizationType">
+        </mat-form-field>
+        <br>
+        <div >
+          <span [ngStyle]="{'margin-right':'20px'}">Is approved </span>
+          <mat-slide-toggle formControlName="isApproved"></mat-slide-toggle>
+        </div>
+        <br>
+      </div>
+       <div>
+         <button [ngStyle]="{'margin-top':'10px'}" type="submit" mat-raised-button color="warn">Edit</button>
+         <button [ngStyle]="{'margin-top':'10px','margin-left':'20px'}" (click)="goBack()" mat-raised-button color="warn">Cancel</button>
+       </div>
+    </form>
+</div>

@@ -1,0 +1,10 @@
+<app-spinner *ngIf="loader"></app-spinner>
+<div *ngIf="organization" className="container" >
+  <div>
+    <h2>{{organization.organizationName}}</h2>
+    <p>Type    : {{organization.organizationType}}</p>
+    <p>Tel Num : 045 234 6832</p>
+    <p>Address : 120A Battaramulla - Pannipitiya Rd</p>
+  </div>
+  <mat-divider></mat-divider>
+</div>

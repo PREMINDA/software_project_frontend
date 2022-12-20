@@ -1,0 +1,69 @@
+.card-data{
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+
+  .card-icon{
+    margin-right: 24px;
+    color: coral;
+  }
+}
+
+.dash-board{
+  display: flex;
+  gap: 12px;
+  padding: 24px;
+  justify-content: center;
+  height: 80%;
+  align-items: center;
+}
+
+.demo-chart{
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 4px -1px rgb(123 145 255 / 73%);
+  border: 1px solid darkgray;
+
+}
+
+.display--card{
+  display: flex;
+  gap: 12px;
+  padding: 24px 12px;
+  border: 1px solid darkgray;
+  flex-direction: column;
+  width: max-content;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 4px -1px rgb(123 145 255 / 73%);
+  height: max-content;
+
+
+  h2, h5{
+    margin: 0;
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+.card-static{
+  max-width: 280px;
+  min-width: 280px;
+  border: 1px solid darkgray;
+  border-radius: 6px;
+  padding: 24px 12px;
+  -webkit-box-shadow: 0 0 4px -1px rgb(123 145 255 / 73%);
+}
+
+.card-static-data{
+  .card-title{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bolder;
+  }
+  .card-count{
+    font-size: 32px;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: coral;
+    font-weight: bolder;
+  }
+}

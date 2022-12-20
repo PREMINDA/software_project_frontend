@@ -1,0 +1,37 @@
+<!--<mat-toolbar class="mat-elevation-z8">-->
+<!--  <h3 style="cursor: pointer" routerLink="{{''}}">Covid Pass</h3>-->
+<!--</mat-toolbar>-->
+
+<mat-sidenav-container [hasBackdrop]="false">
+  <mat-sidenav [disableClose]="true" [opened]="true" #sidenav="matSidenav" class="mat-elevation-z8">
+    <img
+      class="avatar mat-elevation-z8"
+      src="https://media.istockphoto.com/id/1097278304/photo/adorable-jack-russell-retriever-puppy-portrait.webp?s=612x612&w=is&k=20&c=RNFYCJqzDzTjL3gEoldR1c0oWonogkeJRRGY87Hv54g="
+    />
+
+    <h4 *ngIf="logUser" class="name">{{logUser.fullName != undefined ?logUser.fullName:'User'}}</h4>
+    <p *ngIf="logUser" class="designation">{{logUser.roles != undefined ?logUser.roles:'User'}}</p>
+
+    <mat-divider></mat-divider>
+
+    <button *ngFor="let item of sideMenuData" mat-button class="menu-button" routerLink="{{item.url}}">
+      <mat-icon>{{item.icon}}</mat-icon>
+      <span>{{item.title}}</span>
+    </button>
+
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <ng-content>
+
+      </ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

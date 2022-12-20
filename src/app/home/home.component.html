@@ -1,0 +1,80 @@
+<!--<app-header></app-header>-->
+<div class="dash-board">
+  <div *ngIf="staticBoardData" class="display--card">
+    <h2>All Time</h2>
+    <div  class="card-static" >
+      <div class="card-data">
+        <div class="card-icon">
+          <mat-icon>check</mat-icon>
+        </div>
+        <div class="card-static-data">
+          <h4 class="card-title">Total Cases</h4>
+          <h4 class="card-count">{{staticBoardData.local_total_cases}}</h4>
+        </div>
+      </div>
+    </div>
+    <div  class="card-static" >
+      <div class="card-data">
+        <div class="card-icon">
+          <mat-icon>check</mat-icon>
+        </div>
+        <div class="card-static-data">
+          <h4 class="card-title">Deaths</h4>
+          <h4 class="card-count">{{staticBoardData.local_deaths}}</h4>
+        </div>
+      </div>
+    </div>
+    <div  class="card-static" >
+      <div class="card-data">
+        <div class="card-icon">
+          <mat-icon>check</mat-icon>
+        </div>
+        <div class="card-static-data">
+          <h4 class="card-title">Recovered</h4>
+          <h4 class="card-count">{{staticBoardData.local_recovered}}</h4>
+        </div>
+      </div>
+    </div>
+    <h5>{{staticBoardData.update_date_time}}</h5>
+  </div>
+  <div style="height: 490px; width: 60% " echarts [options]="options" class="demo-chart"></div>
+  <div *ngIf="staticBoardData" class="display--card">
+    <h2>Daily (Last 24 Hours)</h2>
+    <div  class="card-static" >
+      <div class="card-data">
+        <div class="card-icon">
+          <mat-icon>check</mat-icon>
+        </div>
+        <div class="card-static-data">
+          <h4 class="card-title">New Cases</h4>
+          <h4 class="card-count">{{staticBoardData.local_new_cases}}</h4>
+        </div>
+      </div>
+    </div>
+    <div  class="card-static" >
+      <div class="card-data">
+        <div class="card-icon">
+          <mat-icon>check</mat-icon>
+        </div>
+        <div class="card-static-data">
+          <h4 class="card-title">New Deaths</h4>
+          <h4 class="card-count">{{staticBoardData.local_new_deaths}}</h4>
+        </div>
+      </div>
+    </div>
+    <div  class="card-static" >
+      <div class="card-data">
+        <div class="card-icon">
+          <mat-icon>check</mat-icon>
+        </div>
+        <div class="card-static-data">
+          <h4 class="card-title">Recovered</h4>
+          <h4 class="card-count">{{3}}</h4>
+        </div>
+      </div>
+    </div>
+    <h5>{{time}}</h5>
+  </div>
+</div>
+
+
