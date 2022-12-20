@@ -14,11 +14,11 @@ const routes: Routes = [
     component:DashboardComponent,
     children:[
       {path:'',component:TestingCompComponent},
-      {path:'admin/users',component:UserListViewComponent},
-      {path: 'admin/user-detail/:id', component: UserDetailComponent },
-      {path:'admin/organization',component:OrganizationListComponent},
-      {path:'admin/organization/:id',component:OrganizationDetailComponent},
-      {path:'admin/user-edit/:id',component:OrganizationEditComponent},
+      {path:'users',component:UserListViewComponent},
+      {path: 'user-detail/:id', component: UserDetailComponent },
+      {path:'organization',component:OrganizationListComponent},
+      {path:'organization/:id',component:OrganizationDetailComponent},
+      {path:'user-edit/:id',component:OrganizationEditComponent},
 
     ]}
 ];

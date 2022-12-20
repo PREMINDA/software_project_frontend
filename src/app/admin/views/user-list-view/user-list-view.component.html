@@ -16,7 +16,7 @@
     <ng-container matColumnDef="isVertified">
       <mat-header-cell *matHeaderCellDef>Vertified</mat-header-cell>
       <mat-cell class="duration-cell"
-                *matCellDef="let element">{{element.isVertified}}</mat-cell>
+                *matCellDef="let element"><mat-icon [ngStyle]="{margin:'0px 20px',color:element.isVertified?'green':'red'}">{{element.isVertified?"check":"close"}}</mat-icon></mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">

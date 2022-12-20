@@ -1,1 +1,70 @@
-<p>organization-register works!</p>
+<div [className]="'container'">
+  <div [className]="'topic'"><h2>Organization Register</h2></div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Organization Name</mat-label>
+        <input matInput placeholder="Organization Name" formControlName="organizationName">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email Address</mat-label>
+        <input matInput placeholder="Email Address" formControlName="emailAddress">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Address" formControlName="address">
+      </mat-form-field>
+      <div [className]="'city-state'">
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="City" formControlName="city">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>District</mat-label>
+          <mat-select formControlName="state">
+            <mat-option *ngFor="let district of districts" [value]="district">
+              {{district}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <mat-form-field [ngStyle]="{'width':'48%'}" appearance="outline">
+        <mat-label>Postal Code</mat-label>
+        <input matInput placeholder="Postal Code" formControlName="postalCode">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Organization Type</mat-label>
+        <mat-select formControlName="organizationType">
+          <mat-option *ngFor="let district of districts" [value]="district">
+            {{district}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div [className]="'city-state'">
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput placeholder="Mobile Number" formControlName="mobileNumber">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Tel Number</mat-label>
+          <input matInput placeholder="Tel Number" formControlName="telNumber">
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error >Password is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Confirm Password" [type]="hide1 ? 'password' : 'text'" formControlName="confirmPassword" required>
+        <mat-icon matSuffix (click)="hide = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error >Password is required</mat-error>
+      </mat-form-field>
+      <div [className]="'button-div'">
+        <button color="warn" mat-raised-button type="submit" class="login-button" >Register</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+

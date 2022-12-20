@@ -12,17 +12,17 @@ export const sideManuConfigData : SideMenuModal[] = [
     title: 'Home'
   },
   {
-    url:'admin/users',
+    url:'users',
     icon: 'person',
     title: 'Users'
   },
   {
-    url:'admin/users',
+    url:'/users',
     icon: 'info',
     title: 'About'
   },
   {
-    url:'admin/organization',
+    url:'organization',
     icon: 'info',
     title: 'Organization'
   },

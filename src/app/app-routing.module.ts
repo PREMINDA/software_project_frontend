@@ -6,7 +6,7 @@ import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   {
-    path:'app',loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule),
+    path:'app/admin',loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule),
     canActivate:[AuthGuard],
   },
   {

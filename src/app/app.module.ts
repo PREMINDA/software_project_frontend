@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component'
 import { NgxEchartsModule } from 'ngx-echarts';
 
-
 @NgModule({
   declarations: [
     AppComponent,

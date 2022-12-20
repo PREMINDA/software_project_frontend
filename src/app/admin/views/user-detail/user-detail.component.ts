@@ -60,7 +60,6 @@ export class UserDetailComponent implements OnInit {
     this.form.setValue(this.user);
   }
 
-
   fetchUserData(){
     this.http.get(`${config.adminService}/User/${this.id}`).subscribe(res=>{
       this.user = res as UserModal;
@@ -76,10 +75,10 @@ export class UserDetailComponent implements OnInit {
   onSubmit(form: FormGroup) {
     this.loader = true;
     this.user = form.value as UserModal;
-    this.http.put(`${config.organization}/User/${this.id}`,this.user).subscribe(
+    this.http.put(`${config.adminService}/User/${this.id}`,this.user).subscribe(
       res=>{
         this.loader = false;
-        this.router.navigate([`app/users/organization`]);
+        this.router.navigate([`app/admin/users`]);
       }
     )
   }
