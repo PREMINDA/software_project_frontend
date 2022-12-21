@@ -20,3 +20,12 @@ export interface OrganizationRegister{
   "organizationType":string;
   "isApproved":boolean;
 }
+
+export interface OrganizationLoginResponse{
+  "id": string,
+  "userType": string,
+  "emailAddress":string,
+  "token":string;
+  "refreshToken":string,
+  "organizationResponse":OrganizationRegister
+}

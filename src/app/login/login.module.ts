@@ -10,12 +10,16 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {SharedModule} from '../shared/shared.module';
+import { OrganizationLoginPageComponent } from './organization-login-page/organization-login-page.component';
+import { OrganizationLoginComponent } from './organization-login/organization-login.component';
 
 
 @NgModule({
   declarations: [
     UserLoginComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    OrganizationLoginPageComponent,
+    OrganizationLoginComponent
   ],
     imports: [
         CommonModule,

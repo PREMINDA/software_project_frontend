@@ -5,6 +5,11 @@ export interface Login{
   password:string;
 }
 
+export interface OrganizationLogin{
+  emailAddress:string;
+  password:string;
+}
+
 export interface LogResponse{
   id: string;
   nationalId: string;

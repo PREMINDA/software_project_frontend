@@ -1,13 +1,16 @@
 <mat-toolbar class="mat-elevation-z8">
   <span style="cursor: pointer" routerLink="{{''}}" class="site-title">Covid Pass</span>
   <span style="margin-right: 36px">
-    <button style="margin-right: 72px" routerLink="{{'/app/admin'}}" *ngIf="authService.isLoggedIn()" mat-icon-button class="example-icon">
+    <button style="margin-right: 72px" routerLink="{{'/app/admin'}}" *ngIf="authService.isLoggedInUser()" mat-icon-button class="example-icon">
     Dashboard <mat-icon>dashboard</mat-icon>
     </button>
-    <button (click)="logOut()" *ngIf="authService.isLoggedIn()" mat-icon-button class="example-icon">
+    <button style="margin-right: 72px" routerLink="{{'/app/organization'}}" *ngIf="authService.isLoggedInOrganization()" mat-icon-button class="example-icon">
+    Dashboard <mat-icon>dashboard</mat-icon>
+    </button>
+    <button (click)="logOut()" *ngIf="authService.isLoggedInUser() || authService.isLoggedInOrganization()" mat-icon-button class="example-icon">
     Logout <mat-icon>logout</mat-icon>
     </button>
-    <button routerLink="{{'/login'}}" *ngIf="!authService.isLoggedIn()" mat-icon-button class="example-icon">
+    <button routerLink="{{'/login/admin-login'}}" *ngIf="!authService.isLoggedInUser() && !authService.isLoggedInOrganization()" mat-icon-button class="example-icon">
     Login <mat-icon>login</mat-icon>
     </button>
   </span>

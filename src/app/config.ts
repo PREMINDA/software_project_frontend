@@ -4,6 +4,7 @@ export const config = {
   adminService: 'https://3p8epgeskl.execute-api.us-west-2.amazonaws.com/api/v1',
   chartUrl: 'https://hpb.health.gov.lk/api/get-statistical-history-data',
   organization:'https://ozitcsoqqa.execute-api.us-west-2.amazonaws.com/api/v1',
-  organizationtest:'https://localhost:7005/api/v1'
+  organizationtest:'https://localhost:7005/api/v1',
+  orgserivce:'https://localhost:7195/api/v1',
 
 };

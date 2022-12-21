@@ -3,8 +3,9 @@ import {catchError, mapTo, Observable, of, tap} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {config} from '../../config';
 import {Tokens} from '../models/token';
-import {Login, LogResponse} from '../models/login';
+import {Login, LogResponse, OrganizationLogin} from '../models/login';
 import {User} from '../models/user';
+import {OrganizationLoginResponse, OrganizationRegister} from '../../admin/views/organization-list/organization.modal';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,19 @@ export class AuthService {
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private readonly USER_DATA = 'USER_DATA';
+  private readonly ORGANIZATION_DATA = 'USER_DATA';
+
   loggedUser: User | undefined;
+  loggedOrganization: OrganizationRegister | undefined;
 
   constructor(private http: HttpClient) {}
 
   login(loginData:Login) {
     return this.http.post(`${config.apiUrl}/login`, loginData);
+  }
+
+  loginOrg(loginData:OrganizationLogin){
+    return this.http.post(`${config.organizationtest}/Orgnization/LoginOrgnization`,loginData);
   }
 
   logout() {
@@ -34,9 +42,14 @@ export class AuthService {
       }));
   }
 
-  isLoggedIn() {
-    return !!this.getJwtToken();
+  isLoggedInUser() {
+    return !!this.getJwtToken() && this.getUserData()?.userType == 'Admin';
   }
+
+  isLoggedInOrganization() {
+    return !!this.getJwtToken() && this.getOrganizationData()?.userType == 'Organization';
+  }
+
 
   refreshToken() {
     return this.http.post<any>(`${config.apiUrl}/refresh`, {
@@ -57,6 +70,13 @@ export class AuthService {
     return undefined;
   }
 
+  public getOrganizationData(): OrganizationRegister | undefined{
+    const user = localStorage.getItem(this.USER_DATA)
+    if(user != null)
+      return JSON.parse(user) as OrganizationRegister;
+    return undefined;
+  }
+
   public doLoginUser(logResponse : LogResponse) {
     this.loggedUser = logResponse.user;
     const tokens: Tokens={
@@ -67,9 +87,25 @@ export class AuthService {
     this.saveUser();
   }
 
+  public doLoginOrganization(logResponse : OrganizationLoginResponse) {
+    this.loggedOrganization = logResponse.organizationResponse;
+    const tokens: Tokens={
+      jwt:logResponse.token,
+      refreshToken:logResponse.refreshToken
+    }
+    this.storeTokens(tokens);
+    this.saveOrganization();
+  }
+
   private saveUser(){
     if(this.loggedUser != undefined){
       localStorage.setItem(this.USER_DATA, JSON.stringify(this.loggedUser));
+    }
+  }
+
+  private saveOrganization(){
+    if(this.loggedOrganization != undefined){
+      localStorage.setItem(this.ORGANIZATION_DATA, JSON.stringify(this.loggedOrganization));
     }
   }
 
@@ -100,6 +136,8 @@ export class AuthService {
     localStorage.removeItem(this.JWT_TOKEN);
     localStorage.removeItem(this.REFRESH_TOKEN);
     localStorage.removeItem(this.USER_DATA);
+    localStorage.removeItem(this.ORGANIZATION_DATA);
+
   }
 
 }

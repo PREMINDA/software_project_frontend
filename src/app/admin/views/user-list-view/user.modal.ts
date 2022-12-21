@@ -4,7 +4,7 @@ export interface UserModal{
   "fullName": string;
   "town": string;
   "district": string;
-  "isVertified": boolean;
+  "isVertified": string;
   "gender": string;
   "location": string;
   "birthDate": string;
@@ -13,4 +13,14 @@ export interface UserModal{
   "userType": string;
   "permissions": string;
   "roles": string;
+  "vaccinationData":VaccineData[],
+}
+
+
+export interface VaccineData{
+  "vaccineType":string;
+  "vaccineDoseNumber":number;
+  "vaccinatedDate":string;
+  "vaccinatedPlace":string;
+
 }

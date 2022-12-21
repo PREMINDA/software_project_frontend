@@ -8,12 +8,14 @@ import {AuthService} from '../../../auth/service/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  isLogIn = false;
+  isLogInUser = false;
+  isLogOrganization = false;
 
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.isLogIn = this.authService.isLoggedIn();
+    this.isLogInUser = this.authService.isLoggedInUser();
+    this.isLogOrganization = this.authService.isLoggedInOrganization();
   }
 
   logOut(){

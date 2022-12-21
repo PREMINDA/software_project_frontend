@@ -74,7 +74,7 @@ export class OrganizationRegisterComponent implements OnInit {
 
   onSubmit() {
     const org = this.form.value as OrganizationRegister;
-    this.http.post(`${config.organizationtest}/Organization/RegisterOrganization`,org).subscribe(res=>{
+    this.http.post(`${config.organizationtest}/Orgnization/RegisterOrgnization`,org).subscribe(res=>{
 
     })
   }

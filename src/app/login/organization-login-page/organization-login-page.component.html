@@ -1,7 +1,7 @@
 <main style="height: 85%">
   <div class="login--form" style="overflow: hidden"  *ngIf="true">
-    <app-user-login ></app-user-login>
+    <app-organization-login></app-organization-login>
     <button routerLink="{{'/register/organization'}}" mat-raised-button type="submit" class="organization-button" >Register Your Organization</button>
-    <button routerLink="{{'/login/organization-login'}}" mat-raised-button type="submit" class="organization-button" >Organization Login</button>
+    <button routerLink="{{'/login/admin-login'}}" mat-raised-button type="submit" class="organization-button" >Admin Login</button>
   </div>
 </main>

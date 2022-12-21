@@ -4,10 +4,10 @@ export default interface SideMenuModal{
   title: string;
 }
 
-export const sideManuConfigData : SideMenuModal[] = [
+export const sideManuConfigDataUser : SideMenuModal[] = [
 
   {
-    url:'/app',
+    url:'/app/admin',
     icon: 'home',
     title: 'Home'
   },
@@ -20,6 +20,25 @@ export const sideManuConfigData : SideMenuModal[] = [
     url:'/users',
     icon: 'info',
     title: 'About'
+  },
+  {
+    url:'organization',
+    icon: 'info',
+    title: 'Organization'
+  },
+]
+
+export const sideManuConfigDataOrg : SideMenuModal[] = [
+
+  {
+    url:'/app/organization',
+    icon: 'home',
+    title: 'Home'
+  },
+  {
+    url:'users',
+    icon: 'person',
+    title: 'Users'
   },
   {
     url:'organization',

@@ -38,15 +38,32 @@
         <mat-label>UserType</mat-label>
         <input matInput readonly placeholder="UserType" formControlName="userType">
       </mat-form-field>
+      <mat-divider></mat-divider>
+      <h3 class="topic">Vaccination Data</h3>
+      <br>
+      <div  class="vc-cards">
+        <div *ngFor="let data of vcData" class="dataCard">
+            <div>
+              <h3 class="vc-data">Dose Number : <b>{{data.vaccineDoseNumber}}</b></h3>
+              <h3 class="vc-data">Vaccine Type : <b>{{data.vaccineType}}</b></h3>
+            </div>
+            <div class="bottom-data">
+              <h3 class="vc-data">Vaccinated Date : <b>{{data.vaccinatedDate.toString()}}</b></h3>
+              <h3 class="vc-data">Vaccinated Place : <b>{{data.vaccinatedPlace}}</b></h3>
+            </div>
+        </div>
+      </div>
+      <br>
+      <mat-divider></mat-divider>
+      <h3 class="topic">Change user Validation</h3>
       <br>
       <mat-form-field appearance="outline">
-        <mat-label>District</mat-label>
+        <mat-label>Validation</mat-label>
         <mat-select formControlName="isVertified">
           <mat-option *ngFor="let option of options" [value]="option">
             {{option}}
           </mat-option>
         </mat-select>
-        <mat-error >District is required</mat-error>
       </mat-form-field>
       <br>
     </div>

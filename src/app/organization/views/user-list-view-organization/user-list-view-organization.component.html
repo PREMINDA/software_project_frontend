@@ -1,0 +1,51 @@
+<app-spinner *ngIf="loader"></app-spinner>
+<div class="user-table">
+  <mat-table class="mat-elevation-z0" *ngIf="users" class="lessons-table mat-elevation-z8" [dataSource]="users">
+
+    <ng-container matColumnDef="fullName">
+      <mat-header-cell *matHeaderCellDef>Full Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.fullName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nationalId">
+      <mat-header-cell *matHeaderCellDef>National Id</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let element">{{element.nationalId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isVertified">
+      <mat-header-cell *matHeaderCellDef>Vertified</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let element"><mat-icon [ngStyle]="{margin:'0px 20px',color:element.isVertified?'green':'red'}">{{element.isVertified?"check":"close"}}</mat-icon></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell [ngClass]="'w-6'" *matHeaderCellDef>More</mat-header-cell>
+      <mat-cell [ngClass]="'w-6'" *matCellDef="let element">
+        <button style="bottom: 0rem" mat-icon-button color="primary" aria-label="Example icon button with a home icon"
+                (click)="openPreview(element)">
+          <mat-icon>rate_review</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell [ngClass]="'w-6'" *matHeaderCellDef>Delete</mat-header-cell>
+      <mat-cell [ngClass]="'w-6'" *matCellDef="let element">
+        <button style="bottom: 0rem" mat-icon-button color="primary" aria-label="Example icon button with a home icon"
+                (click)="openPreview(element)">
+          <mat-icon class="icon-color">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+</div>

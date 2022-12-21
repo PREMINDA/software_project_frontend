@@ -6,20 +6,18 @@ import {AuthService} from '../service/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
-
+export class OrganizationGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate() {
-    if (this.authService.isLoggedInUser()) {
+    if (this.authService.isLoggedInOrganization()) {
       return true;
     }
     else {
-      console.log(this.authService.isLoggedInOrganization())
-      if(this.authService.isLoggedInOrganization()){
-        this.router.navigate(['/app/organization']);
+      if(this.authService.isLoggedInUser()){
+        this.router.navigate(['/app/admin']);
       }else{
-        this.router.navigate(['/login/admin-login']);
+        this.router.navigate(['/login/organization-login']);
       }
 
     }

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import {UserModal, VaccineData} from '../../../admin/views/user-list-view/user.modal';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {config} from '../../../config';
-import {UserModal} from '../user-list-view/user.modal';
-import {FormBuilder, FormGroup} from '@angular/forms';
 import {Location} from '@angular/common';
+import {config} from '../../../config';
 
 @Component({
-  selector: 'app-user-detail',
-  templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  selector: 'app-user-detail-view-organization',
+  templateUrl: './user-detail-view-organization.component.html',
+  styleUrls: ['./user-detail-view-organization.component.scss']
 })
-export class UserDetailComponent implements OnInit {
+export class UserDetailViewOrganizationComponent implements OnInit {
 
   id = '';
   user !: UserModal;
@@ -19,6 +19,27 @@ export class UserDetailComponent implements OnInit {
   form !: FormGroup;
 
   options:string[]=["Verified", "Not Verified", "Pending"];
+
+  vcData: VaccineData[] = [
+    {
+      vaccinatedDate:new Date().toISOString().split('T')[0],
+      vaccinatedPlace:'balan',
+      vaccineDoseNumber:1,
+      vaccineType:'sin'
+    },
+    {
+      vaccinatedDate:new Date().toISOString().split('T')[0],
+      vaccinatedPlace:'balan',
+      vaccineDoseNumber:1,
+      vaccineType:'sin'
+    },
+    {
+      vaccinatedDate:new Date().toISOString().split('T')[0],
+      vaccinatedPlace:'balan',
+      vaccineDoseNumber:1,
+      vaccineType:'sin'
+    },
+    ]
 
   constructor(
     private fb: FormBuilder,
@@ -54,12 +75,14 @@ export class UserDetailComponent implements OnInit {
       emergencyContactNumber:'',
       userType:'',
       permissions:'',
-      roles:''
+      roles:'',
+      vaccinationData:''
     });
   }
 
   setValue(){
     this.form.setValue(this.user);
+    console.log(this.form.value as UserModal);
   }
 
   fetchUserData(){
@@ -77,11 +100,12 @@ export class UserDetailComponent implements OnInit {
   onSubmit(form: FormGroup) {
     this.loader = true;
     this.user = form.value as UserModal;
-    this.http.put(`${config.adminService}/User/${this.id}`,this.user).subscribe(
+    this.http.put(`${config.orgserivce}/Organization/User/${this.id}`,this.user).subscribe(
       res=>{
         this.loader = false;
         this.router.navigate([`app/admin/users`]);
       }
     )
   }
+
 }

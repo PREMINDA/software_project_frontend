@@ -1,0 +1,16 @@
+.dataCard{
+  box-shadow: 0px 0px 20px -2px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  display: inline-block;
+  height: 100%;
+  padding: 12px;
+  .bottom-data{
+    margin-left: 36px;
+  }
+  .vc-data{
+    font-size: large;
+  }
+
+}
+
+.in-data{display: flex}
