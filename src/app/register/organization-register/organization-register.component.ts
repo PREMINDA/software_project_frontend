@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Location} from '@angular/common';
 import {OrganizationRegister} from '../../admin/views/organization-list/organization.modal';
+import {matchValidator} from '../../utils/CustomValidator';
+import {config} from '../../config';
 
 
 @Component({
@@ -28,6 +30,13 @@ export class OrganizationRegisterComponent implements OnInit {
     'Vavuniya'
   ];
 
+  orgTypes: string[] = ['Hospital','University','School',
+    'Garment','Pharmacy','Other','Gampaha','Hambantota','Jaffna',
+    'Kalutara','Kandy','Kegalle','Kilinochchi','Kurunegala','Mannara','Matale','Matara',
+    'Moneragala','Mullaitivu','Nuwara Eliya','Polonnaruwa','Puttalam','Rathnapura','Trincomalee',
+    'Vavuniya'
+  ];
+
   constructor(
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
@@ -40,6 +49,7 @@ export class OrganizationRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.createFrom();
+    this.loader= false;
   }
 
   createFrom(){
@@ -49,14 +59,13 @@ export class OrganizationRegisterComponent implements OnInit {
       city: ['', Validators.required ],
       state:['', Validators.required ],
       postalCode:['', Validators.required ],
-      userType:['', Validators.required ],
-      password:['', Validators.required ],
-      confirmPassword:['', Validators.required],
-      emailAddress:['', Validators.required ],
-      mobileNumber:['', Validators.required,Validators.pattern("^[0-9]*$"),
-        Validators.minLength(10) ],
-      telNumber:['', Validators.required ,Validators.pattern("^[0-9]*$"),
-        Validators.minLength(10)],
+      password:['', [Validators.required, matchValidator('confirmPassword', true)]],
+      confirmPassword:['', [Validators.required,matchValidator('password')]],
+      emailAddress:['', [Validators.required, Validators.email]],
+      mobileNumber:["", [Validators.required, Validators.minLength(10),
+        Validators.maxLength(10), Validators.pattern("^[0-9]*$")]],
+      telNumber:["", [Validators.required, Validators.minLength(10),
+        Validators.maxLength(10), Validators.pattern("^[0-9]*$")]],
       organizationType:['', Validators.required ],
       isApproved:[false, Validators.required ],
     });
@@ -65,6 +74,12 @@ export class OrganizationRegisterComponent implements OnInit {
 
   onSubmit() {
     const org = this.form.value as OrganizationRegister;
-    console.log(this.form);
+    this.http.post(`${config.organizationtest}/Organization/RegisterOrganization`,org).subscribe(res=>{
+
+    })
+  }
+
+  get fPassword(){
+    return this.form.get('confirmPassword');
   }
 }

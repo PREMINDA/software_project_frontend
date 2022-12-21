@@ -5,19 +5,24 @@
       <mat-form-field appearance="outline">
         <mat-label>Organization Name</mat-label>
         <input matInput placeholder="Organization Name" formControlName="organizationName">
+        <mat-error >Organization Name is required</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Email Address</mat-label>
         <input matInput placeholder="Email Address" formControlName="emailAddress">
+        <mat-error *ngIf="!loader && form.controls['emailAddress']?.errors?.['required']" >Email Address is required</mat-error>
+        <mat-error *ngIf="!loader && form.controls['emailAddress']?.errors?.['email']">Enter Valid Email</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Address</mat-label>
         <input matInput placeholder="Address" formControlName="address">
+        <mat-error >Address is required</mat-error>
       </mat-form-field>
       <div [className]="'city-state'">
         <mat-form-field appearance="outline">
           <mat-label>City</mat-label>
           <input matInput placeholder="City" formControlName="city">
+          <mat-error >City is required</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>District</mat-label>
@@ -26,28 +31,37 @@
               {{district}}
             </mat-option>
           </mat-select>
+          <mat-error >District is required</mat-error>
         </mat-form-field>
       </div>
       <mat-form-field [ngStyle]="{'width':'48%'}" appearance="outline">
         <mat-label>Postal Code</mat-label>
         <input matInput placeholder="Postal Code" formControlName="postalCode">
+        <mat-error >Postal Code is required</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Organization Type</mat-label>
         <mat-select formControlName="organizationType">
-          <mat-option *ngFor="let district of districts" [value]="district">
-            {{district}}
+          <mat-option *ngFor="let orgType of orgTypes" [value]="orgType">
+            {{orgType}}
           </mat-option>
         </mat-select>
+        <mat-error >Organization Type is required</mat-error>
       </mat-form-field>
       <div [className]="'city-state'">
         <mat-form-field appearance="outline">
           <mat-label>Mobile Number</mat-label>
           <input matInput placeholder="Mobile Number" formControlName="mobileNumber">
+          <mat-error *ngIf="!loader && form.controls['mobileNumber']?.errors?.['required']">Mobile Number is required</mat-error>
+          <mat-error *ngIf="!loader && form.controls['mobileNumber']?.errors?.['minlength']">Enter valid phone number(10 numbers)</mat-error>
+          <mat-error *ngIf="!loader && form.controls['mobileNumber']?.errors?.['pattern']">Enter valid phone number(10 numbers)</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Tel Number</mat-label>
           <input matInput placeholder="Tel Number" formControlName="telNumber">
+          <mat-error *ngIf="!loader && form.controls['telNumber']?.errors?.['required']">Tel Number is required</mat-error>
+          <mat-error *ngIf="!loader && form.controls['telNumber']?.errors?.['minlength']">Enter valid phone number(10 numbers)</mat-error>
+          <mat-error *ngIf="!loader && form.controls['telNumber']?.errors?.['pattern']">Enter valid phone number(10 numbers)</mat-error>
         </mat-form-field>
       </div>
       <mat-form-field appearance="outline">
@@ -57,8 +71,10 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <input matInput placeholder="Confirm Password" [type]="hide1 ? 'password' : 'text'" formControlName="confirmPassword" required>
-        <mat-icon matSuffix (click)="hide = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
-        <mat-error >Password is required</mat-error>
+        <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="!loader && form.controls['confirmPassword']?.errors?.['required']" >Confirm Password is required</mat-error>
+        <mat-error *ngIf="!loader && form.controls['confirmPassword']?.errors?.['matching']">Password dose not match</mat-error>
+
       </mat-form-field>
       <div [className]="'button-div'">
         <button color="warn" mat-raised-button type="submit" class="login-button" >Register</button>
