@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Organization} from '../organization-list/organization.modal';
+import {Organization, OrganizationResponse} from '../organization-list/organization.modal';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {config} from '../../../config';
@@ -42,30 +42,34 @@ export class OrganizationEditComponent implements OnInit {
       id: '',
       organizationName: '',
       organizationType: '',
-      isApproved: false
+      isApproved: '',
+      address:'',
+      city:'',
+      state:'',
+      postalCode:'',
+      userType:'',
+      emailAddress:'',
+      mobileNumber:'',
+      employeesWithPasses:''
+      // telNumber:'',
     });
   }
 
   fetchUserData(){
     this.http.get(`${config.organization}/Organization/${this.id}`).subscribe(res=>{
-      this.organization = res as Organization;
+      this.organization = res as OrganizationResponse;
       this.setValue();
       this.loader = false;
     })
   }
 
   setValue(){
-    this.form.setValue({
-      'id':this.organization.id,
-      'organizationName':this.organization.organizationName,
-      'organizationType':this.organization.organizationType,
-      'isApproved':this.organization.isApproved
-    })
+    this.form.setValue(this.organization)
   }
 
   onSubmit(form: FormGroup) {
     this.loader = true;
-    this.organization = form.value as Organization;
+    this.organization = form.value as OrganizationResponse;
     this.http.put(`${config.organization}/Organization/${this.id}`,this.organization).subscribe(
       res=>{
         this.loader = false;

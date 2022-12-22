@@ -2,14 +2,41 @@
 <div [className]="'container'">
     <form [className]="'form-container'" action="" [formGroup]="form" (ngSubmit)="onSubmit(form)">
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field  appearance="outline">
           <mat-label>Organization Name</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="organizationName">
+          <input matInput readonly placeholder="Organization Name" formControlName="organizationName">
         </mat-form-field>
-        <br>
         <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput readonly placeholder="Address" formControlName="address">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>State</mat-label>
+          <input matInput readonly placeholder="State" formControlName="state">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input matInput readonly placeholder="Postal Code" formControlName="postalCode">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>User Type</mat-label>
+          <input matInput readonly placeholder="User Type" formControlName="userType">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input matInput readonly placeholder="Email Address" formControlName="emailAddress">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput readonly placeholder="Mobile Number" formControlName="mobileNumber">
+        </mat-form-field>
+     <!--   <mat-form-field  appearance="outline">
+          <mat-label>Tel Number</mat-label>
+          <input matInput readonly placeholder="Tel Number" formControlName="telNumber">
+        </mat-form-field>-->
+        <mat-form-field  appearance="outline">
           <mat-label>Organization Type</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="organizationType">
+          <input matInput readonly placeholder="Organization Type" formControlName="organizationType">
         </mat-form-field>
         <br>
         <div >

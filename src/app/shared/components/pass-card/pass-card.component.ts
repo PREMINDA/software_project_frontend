@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit,Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-pass-card',
@@ -16,9 +16,21 @@ export class PassCardComponent implements OnInit {
   @Input() from!:string;
   @Input() to!:string;
 
+  @Output() someEvent = new EventEmitter<string>();
+  @Output() deleteEvent = new EventEmitter<string>();
+
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  callParent(): void {
+    this.someEvent.next('somePhone');
+  }
+
+  delete():void{
+    this.deleteEvent.next('some')
   }
 
 }

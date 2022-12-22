@@ -21,6 +21,21 @@ export interface OrganizationRegister{
   "isApproved":boolean;
 }
 
+export interface OrganizationResponse{
+  "id"?:string;
+  "organizationName":string;
+  "address":string;
+  "city":string;
+  "state":string;
+  "postalCode":string;
+  "userType":string;
+  "emailAddress":string;
+  "mobileNumber":string;
+  "telNumber":string;
+  "organizationType":string;
+  "isApproved":boolean;
+}
+
 export interface OrganizationLoginResponse{
   "id": string,
   "userType": string,

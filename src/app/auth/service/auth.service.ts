@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   loginOrg(loginData:OrganizationLogin){
-    return this.http.post(`${config.organizationtest}/Orgnization/LoginOrgnization`,loginData);
+    return this.http.post(`${config.apiUrl}/Orgnization/LoginOrgnization`,loginData);
   }
 
   logout() {

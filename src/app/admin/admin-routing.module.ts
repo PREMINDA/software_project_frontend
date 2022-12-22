@@ -18,7 +18,7 @@ const routes: Routes = [
       {path: 'user-detail/:id', component: UserDetailComponent },
       {path:'organization',component:OrganizationListComponent},
       {path:'organization/:id',component:OrganizationDetailComponent},
-      {path:'user-edit/:id',component:OrganizationEditComponent},
+      {path:'organization-edit/:id',component:OrganizationEditComponent},
 
     ]}
 ];

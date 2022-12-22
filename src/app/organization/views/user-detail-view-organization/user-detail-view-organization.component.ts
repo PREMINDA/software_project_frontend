@@ -59,7 +59,7 @@ export class UserDetailViewOrganizationComponent implements OnInit {
     if(id){
       this.id = id;
       this.fetchUserData();
-      // this.fetchPassData();
+      this.fetchPassData();
     }
   }
 
@@ -93,13 +93,13 @@ export class UserDetailViewOrganizationComponent implements OnInit {
     this.http.get(`${config.organization}/Organization/User/${this.id}`).subscribe(res=>{
       this.user = res as UserModal;
       this.setValue();
-      this.loader = false;
     })
   }
 
   fetchPassData(){
     this.http.get(`${config.passService}/Pass-userid/${this.id}`).subscribe(res=>{
-      // this.passes = res as PassData[];
+      this.passes = res as PassData[];
+      console.log(this.passes)
       this.loader = false;
     })
   }
@@ -118,4 +118,24 @@ export class UserDetailViewOrganizationComponent implements OnInit {
     )
   }
 
+  onlyDate(date: Date):string {
+    return  new Date(date).toISOString().split('T')[0];
+  }
+
+  editPass(pass : PassData) {
+    pass.isApproved = true;
+    this.loader = true;
+    this.http.put(`${config.passService}/Pass/${pass.id}`,pass).subscribe(res=>{
+      this.loader = false;
+      this.fetchUserData();
+    })
+  }
+
+  deletePass(pass: PassData) {
+    this.loader = true;
+    this.http.delete(`${config.passService}/Pass/${pass.id}`).subscribe(res=>{
+      this.loader = false;
+      this.fetchPassData();
+    })
+  }
 }

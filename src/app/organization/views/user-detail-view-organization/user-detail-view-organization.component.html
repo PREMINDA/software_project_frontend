@@ -74,9 +74,18 @@
 </div>
 <h3 class="topic"><b>User Passes</b></h3>
 <br>
-<div class="pass-container">
-  <app-pass-card></app-pass-card>
-  <app-pass-card></app-pass-card>
-  <app-pass-card></app-pass-card>
+<div *ngIf=" !loader && passes.length>=1 "  class="pass-container">
+  <app-pass-card *ngFor="let pass of passes"
+                 [endDate]="onlyDate(pass.endDateTime)"
+                 [from]="pass.from"
+                 [generateDateTime]="onlyDate(pass.generatedDateTime)"
+                 [isApproved]="pass.isApproved"
+                 [isValid]="pass.isValid"
+                 [passCategory]="pass.passCategory"
+                 [startDate]="onlyDate(pass.startDateTime)"
+                 [to]="pass.to"
+                 (someEvent)="editPass(pass)"
+                 (deleteEvent)="deletePass(pass)"
+  ></app-pass-card>
 </div>
 
