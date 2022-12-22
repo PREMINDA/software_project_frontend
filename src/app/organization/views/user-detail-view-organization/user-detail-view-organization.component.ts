@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Location} from '@angular/common';
 import {config} from '../../../config';
+import {PassData} from '../../../shared/model/passData';
 
 @Component({
   selector: 'app-user-detail-view-organization',
@@ -15,6 +16,7 @@ export class UserDetailViewOrganizationComponent implements OnInit {
 
   id = '';
   user !: UserModal;
+  passes !: PassData[];
   loader: boolean = true;
   form !: FormGroup;
 
@@ -57,6 +59,7 @@ export class UserDetailViewOrganizationComponent implements OnInit {
     if(id){
       this.id = id;
       this.fetchUserData();
+      // this.fetchPassData();
     }
   }
 
@@ -76,7 +79,8 @@ export class UserDetailViewOrganizationComponent implements OnInit {
       userType:'',
       permissions:'',
       roles:'',
-      vaccinationData:''
+      vaccinationData:'',
+      organizationId:''
     });
   }
 
@@ -86,9 +90,16 @@ export class UserDetailViewOrganizationComponent implements OnInit {
   }
 
   fetchUserData(){
-    this.http.get(`${config.adminService}/User/${this.id}`).subscribe(res=>{
+    this.http.get(`${config.organization}/Organization/User/${this.id}`).subscribe(res=>{
       this.user = res as UserModal;
       this.setValue();
+      this.loader = false;
+    })
+  }
+
+  fetchPassData(){
+    this.http.get(`${config.passService}/Pass-userid/${this.id}`).subscribe(res=>{
+      // this.passes = res as PassData[];
       this.loader = false;
     })
   }
@@ -100,10 +111,9 @@ export class UserDetailViewOrganizationComponent implements OnInit {
   onSubmit(form: FormGroup) {
     this.loader = true;
     this.user = form.value as UserModal;
-    this.http.put(`${config.orgserivce}/Organization/User/${this.id}`,this.user).subscribe(
+    this.http.put(`${config.organization}/Organization/User/${this.id}`,this.user).subscribe(
       res=>{
         this.loader = false;
-        this.router.navigate([`app/admin/users`]);
       }
     )
   }

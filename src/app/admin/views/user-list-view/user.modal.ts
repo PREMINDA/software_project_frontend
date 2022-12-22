@@ -14,6 +14,7 @@ export interface UserModal{
   "permissions": string;
   "roles": string;
   "vaccinationData":VaccineData[],
+  "organizationId":string;
 }
 
 

@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { VaccinationCardComponent } from './components/vaccination-card/vaccination-card.component';
+import { PassCardComponent } from './components/pass-card/pass-card.component';
 
 
 
@@ -46,18 +47,19 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [...components, ShellComponent, FooterComponent, HeaderComponent, SpinnerComponent, VaccinationCardComponent],
+  declarations: [...components, ShellComponent, FooterComponent, HeaderComponent, SpinnerComponent, VaccinationCardComponent, PassCardComponent],
     imports: [
         CommonModule,
         ...modules,
         MatProgressSpinnerModule
     ],
-    exports: [
-        ...modules,
-        ...components,
-        HeaderComponent,
-        SpinnerComponent,
-        VaccinationCardComponent
-    ],
+  exports: [
+    ...modules,
+    ...components,
+    HeaderComponent,
+    SpinnerComponent,
+    VaccinationCardComponent,
+    PassCardComponent
+  ],
 })
 export class SharedModule { }

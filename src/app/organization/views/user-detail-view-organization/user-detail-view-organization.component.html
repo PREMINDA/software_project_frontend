@@ -39,7 +39,7 @@
         <input matInput readonly placeholder="UserType" formControlName="userType">
       </mat-form-field>
       <mat-divider></mat-divider>
-      <h3 class="topic">Vaccination Data</h3>
+      <h3 class="topic"><b>Vaccination Data</b></h3>
       <br>
       <div  class="vc-cards">
         <div *ngFor="let data of vcData" class="dataCard">
@@ -55,7 +55,7 @@
       </div>
       <br>
       <mat-divider></mat-divider>
-      <h3 class="topic">Change user Validation</h3>
+      <h3 class="topic"><b>Change user Validation</b></h3>
       <br>
       <mat-form-field appearance="outline">
         <mat-label>Validation</mat-label>
@@ -66,10 +66,17 @@
         </mat-select>
       </mat-form-field>
       <br>
-    </div>
-    <div>
-      <button [ngStyle]="{'margin-top':'10px'}" type="submit" mat-raised-button color="warn">Edit</button>
-      <button [ngStyle]="{'margin-top':'10px','margin-left':'20px'}" (click)="goBack()" mat-raised-button color="warn">Cancel</button>
+      <button [ngStyle]="{'margin-bottom':'10px'}" type="submit" mat-raised-button color="warn">Edit</button>
+      <br>
+      <mat-divider></mat-divider>
     </div>
   </form>
 </div>
+<h3 class="topic"><b>User Passes</b></h3>
+<br>
+<div class="pass-container">
+  <app-pass-card></app-pass-card>
+  <app-pass-card></app-pass-card>
+  <app-pass-card></app-pass-card>
+</div>
+

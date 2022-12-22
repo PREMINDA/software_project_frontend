@@ -35,4 +35,23 @@ export class UserListViewComponent implements OnInit {
     this.router.navigate([`app/admin/user-detail/${element.id}`]);
   }
 
+  getColor(value:string):string{
+    let color = '';
+    switch (value){
+      case 'Verified':{
+        color = '#00DC10';
+        break;
+      }
+      case 'Pending':{
+        color = 'orange';
+        break;
+      }
+      case 'NotVerified':{
+        color = 'red';
+        break;
+      }
+    }
+    return color;
+  }
+
 }

@@ -1,0 +1,62 @@
+<div class="pass-card-form">
+  <div class="pass-card">
+    <div class="data-card-container">
+      <div class="data-card">
+        <br>
+        <mat-icon>calendar_today</mat-icon>
+        <span>Generated Date </span>
+        <span> 12/12/1212</span>
+      </div>
+      <div class="data-card">
+        <br>
+        <mat-icon>event_available</mat-icon>
+        <span>Start Date</span>
+        <span> 12/12/1212</span>
+      </div>
+      <div class="data-card">
+        <br>
+        <mat-icon>event_busy</mat-icon>
+        <span>End Date</span>
+        <span> 12/12/1212</span>
+      </div>
+      <div class="data-card">
+        <br>
+        <mat-icon [ngStyle]="{'color':'#00DC10'}" *ngIf="isValid">done</mat-icon>
+        <mat-icon [ngStyle]="{'color':'red'}" *ngIf="!isValid">close</mat-icon>
+        <span>Is Valid</span>
+        <span> 12/12/1212</span>
+      </div>
+      <div class="data-card">
+        <br>
+        <mat-icon [ngStyle]="{'color':'#00DC10'}" *ngIf="isApproved">done</mat-icon>
+        <mat-icon [ngStyle]="{'color':'red'}" *ngIf="!isApproved">close</mat-icon>
+        <span>Is Approved</span>
+        <span> 12/12/1212</span>
+      </div>
+      <div class="data-card">
+        <br>
+        <mat-icon> local_play</mat-icon>
+        <span>Pass Category</span>
+        <span> 12/12/1212</span>
+      </div>
+      <div class="data-card">
+        <br>
+        <mat-icon>my_location</mat-icon>
+        <span>From</span>
+        <span> 12/12/1212</span>
+      </div>
+      <div class="data-card">
+        <br>
+        <mat-icon>pin_drop</mat-icon>
+        <span>To</span>
+        <span> 12/12/1212</span>
+      </div>
+
+    </div>
+    <div class="button-container">
+      <button [ngStyle]="{'margin-bottom':'10px'}" type="submit" mat-raised-button color="warn">Approve</button>
+      <button [ngStyle]="{'margin-bottom':'10px'}" type="submit" mat-raised-button color="warn">Delete</button>
+    </div>
+
+  </div>
+</div>
