@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {UserModal} from '../../../admin/views/user-list-view/user.modal';
+// import { MatPaginator } from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {config} from '../../../config';
@@ -12,6 +13,8 @@ import {Organization, OrganizationRegister} from '../../../admin/views/organizat
   styleUrls: ['./user-list-view-organization.component.scss']
 })
 export class UserListViewOrganizationComponent implements OnInit {
+
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
 
   loader: boolean = true;
   organizationData !: OrganizationRegister | undefined;
