@@ -12,7 +12,7 @@
     <br />
     <a href="https://github.com/Madushan98/software_project_mobile"><strong>Mobile-app</strong></a>
      ·
-    <a href="https://github.com/Nims98/Covid_Pass"><strong>Web - UI</strong></a>
+    <a href="https://github.com/PREMINDA/software_project_frontend"><strong>Web - UI</strong></a>
     ·
     <a href="https://github.com/Madushan98/webApi-softwareProject"><strong>API</strong></a>
   </p>
