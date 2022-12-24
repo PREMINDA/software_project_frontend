@@ -6,6 +6,7 @@ export const config = {
   organization:'https://ozitcsoqqa.execute-api.us-west-2.amazonaws.com/api/v1',
   authtest:'https://localhost:7005/api/v1',
   orgserivce:'https://localhost:7195/api/v1',
-  passService: 'https://5cij6xabb7.execute-api.us-west-2.amazonaws.com/api/v1'
+  passService: 'https://5cij6xabb7.execute-api.us-west-2.amazonaws.com/api/v1',
+  userService: 'https://l6y2icvu11.execute-api.us-west-2.amazonaws.com/api/v1'
 
 };

@@ -19,5 +19,5 @@
   </mat-card-content>
 </mat-card>
 <div class="credentials-box">
-  <h3 *ngIf="errorMessage" class="credentials">Login failed wrong user credentials</h3>
+  <h3 *ngIf="error" class="credentials">{{error}}</h3>
 </div>

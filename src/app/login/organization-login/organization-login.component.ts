@@ -17,6 +17,7 @@ export class OrganizationLoginComponent implements OnInit {
   serverMessage!: string;
   logResponse : OrganizationLoginResponse | undefined;
   errorMessage : string | undefined;
+  error : string = '';
 
   constructor(private fb: FormBuilder,private auth : AuthService,private router: Router) {
     form: FormGroup;
@@ -51,7 +52,7 @@ export class OrganizationLoginComponent implements OnInit {
         this.auth.doLoginOrganization(this.logResponse);
         this.router.navigate(['']);
       },(err:any)=>{this.errorMessage = err.message;
-        console.log(this.errorMessage);
+        this.error = err?.error?.message;
       })
     }
   }

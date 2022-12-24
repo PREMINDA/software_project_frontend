@@ -41,7 +41,7 @@
 
     </div>
     <div class="button-container">
-      <button [ngStyle]="{'margin-bottom':'10px'}" (click)="callParent()" mat-raised-button color="warn">Approve</button>
+      <button *ngIf="!isApproved" [ngStyle]="{'margin-bottom':'10px'}" (click)="callParent()" mat-raised-button color="warn">Approve</button>
       <button [ngStyle]="{'margin-bottom':'10px'}" (click)="delete()" mat-raised-button color="warn">Delete</button>
     </div>
 

@@ -22,26 +22,7 @@ export class UserDetailViewOrganizationComponent implements OnInit {
 
   options:string[]=["Verified", "Not Verified", "Pending"];
 
-  vcData: VaccineData[] = [
-    {
-      vaccinatedDate:new Date().toISOString().split('T')[0],
-      vaccinatedPlace:'balan',
-      vaccineDoseNumber:1,
-      vaccineType:'sin'
-    },
-    {
-      vaccinatedDate:new Date().toISOString().split('T')[0],
-      vaccinatedPlace:'balan',
-      vaccineDoseNumber:1,
-      vaccineType:'sin'
-    },
-    {
-      vaccinatedDate:new Date().toISOString().split('T')[0],
-      vaccinatedPlace:'balan',
-      vaccineDoseNumber:1,
-      vaccineType:'sin'
-    },
-    ]
+  vcData: VaccineData[] = []
 
   constructor(
     private fb: FormBuilder,
@@ -60,6 +41,7 @@ export class UserDetailViewOrganizationComponent implements OnInit {
       this.id = id;
       this.fetchUserData();
       this.fetchPassData();
+      this.fetchVcData();
     }
   }
 
@@ -92,6 +74,13 @@ export class UserDetailViewOrganizationComponent implements OnInit {
   fetchUserData(){
     this.http.get(`${config.organization}/Organization/User/${this.id}`).subscribe(res=>{
       this.user = res as UserModal;
+      this.setValue();
+    })
+  }
+
+  fetchVcData(){
+    this.http.get(`${config.userService}/user/vaccination-details/${this.id}`).subscribe(res=>{
+      this.vcData = res as VaccineData[];
       this.setValue();
     })
   }
