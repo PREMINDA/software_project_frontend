@@ -24,9 +24,17 @@ export class UserListViewComponent implements OnInit {
   }
 
   fetchData(): void{
-    this.http.get(`${config.orgserivce}/Organization/Users`).subscribe((res:any)=>{
+    this.http.get(`${config.adminService}/User`).subscribe((res:any)=>{
       this.users = res.data as UserModal[];
       this.loader = false;
+    })
+  }
+
+  deleteUser(user:UserModal):void{
+    this.loader = true;
+    this.http.delete(`${config.adminService}/User/${user.id}`).subscribe((res:any)=>{
+      this.users = res.data as UserModal[];
+      this.fetchData();
     })
   }
 

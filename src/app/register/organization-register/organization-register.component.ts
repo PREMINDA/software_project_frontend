@@ -7,12 +7,17 @@ import {Location} from '@angular/common';
 import {OrganizationRegister} from '../../admin/views/organization-list/organization.modal';
 import {matchValidator} from '../../utils/CustomValidator';
 import {config} from '../../config';
+import {districts} from '../../shared/model/constent'
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {PopWindowComponent} from '../../shared/components/pop-window/pop-window.component';
+import { FormGroupDirective } from '@angular/forms';
 
 
 @Component({
   selector: 'app-organization-register',
   templateUrl: './organization-register.component.html',
-  styleUrls: ['./organization-register.component.scss']
+  styleUrls: ['./organization-register.component.scss'],
+  providers: [FormGroupDirective]
 })
 export class OrganizationRegisterComponent implements OnInit {
 
@@ -20,37 +25,42 @@ export class OrganizationRegisterComponent implements OnInit {
   user !: UserModal;
   hide = true;
   hide1 = true;
-  loader: boolean = true;
+  loader: boolean = false;
   match : boolean = false;
   form !: FormGroup;
-  districts: string[] = ['Ampara','Anuradhapura','Badulla',
-    'Batticaloa','Colombo','Galle','Gampaha','Hambantota','Jaffna',
-    'Kalutara','Kandy','Kegalle','Kilinochchi','Kurunegala','Mannara','Matale','Matara',
-    'Moneragala','Mullaitivu','Nuwara Eliya','Polonnaruwa','Puttalam','Rathnapura','Trincomalee',
-    'Vavuniya'
-  ];
+  formInit !: FormGroup;
+  dis: string[] = districts;
+  data = 'Wait Until Approve Your Organization';
 
-  orgTypes: string[] = ['Hospital','University','School',
-    'Garment','Pharmacy','Other','Gampaha','Hambantota','Jaffna',
-    'Kalutara','Kandy','Kegalle','Kilinochchi','Kurunegala','Mannara','Matale','Matara',
-    'Moneragala','Mullaitivu','Nuwara Eliya','Polonnaruwa','Puttalam','Rathnapura','Trincomalee',
-    'Vavuniya'
-  ];
+  orgTypes: string[] = ['Hospital','University','School', 'Garment','Pharmacy'];
 
   constructor(
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private dialog: MatDialog,
+    formDirective: FormGroupDirective
   ) {
     form: FormGroup;
   }
 
   ngOnInit(): void {
     this.createFrom();
+    this.formInit = this.form;
     this.loader= false;
   }
+
+ openMatBox(){
+   this.dialog.open(PopWindowComponent, {
+     width: '500px',
+     height: '300px',
+     data: {
+       dataKey: this.data
+     }
+   });
+ }
 
   createFrom(){
     this.form = this.fb.group({
@@ -72,10 +82,14 @@ export class OrganizationRegisterComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  onSubmit(formDirective:FormGroupDirective) {
+    this.loader = true;
     const org = this.form.value as OrganizationRegister;
     this.http.post(`${config.apiUrl}/Orgnization/RegisterOrgnization`,org).subscribe(res=>{
-
+      this.openMatBox();
+      this.form.reset();
+      formDirective.resetForm();
+      this.loader = false;
     })
   }
 

@@ -20,6 +20,7 @@ export class UserDetailComponent implements OnInit {
 
   options:string[]=["Verified", "Not Verified", "Pending"];
 
+
   constructor(
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
@@ -54,7 +55,9 @@ export class UserDetailComponent implements OnInit {
       emergencyContactNumber:'',
       userType:'',
       permissions:'',
-      roles:''
+      roles:'',
+      organizationId:'',
+      vaccinationData:''
     });
   }
 

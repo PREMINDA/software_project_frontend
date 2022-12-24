@@ -1,0 +1,98 @@
+<app-spinner *ngIf="loader"></app-spinner>
+<div [className]="'container'">
+  <form [className]="'form-container'" action="" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div>
+      <mat-form-field  appearance="outline">
+        <mat-label>National ID</mat-label>
+        <input matInput  placeholder="National ID" formControlName="nationalId">
+        <mat-error >National ID required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Full Name</mat-label>
+        <input matInput  placeholder="Full Name" formControlName="fullName">
+        <mat-error >Full Name required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput  placeholder="Address" formControlName="address">
+        <mat-error >Address required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input matInput  placeholder="City" formControlName="town">
+        <mat-error >City required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>District</mat-label>
+        <mat-select formControlName="district">
+          <mat-option *ngFor="let district of dis" [value]="district">
+            {{district}}
+          </mat-option>
+        </mat-select>
+        <mat-error >District is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option *ngFor="let district of gen" [value]="district">
+            {{district}}
+          </mat-option>
+        </mat-select>
+        <mat-error >Gender required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Birth date</mat-label>
+        <input matInput formControlName="birthDate" [matDatepicker]="picker" (click)="picker.open()">
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error >Birth Date required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Primary Contact Number</mat-label>
+        <input matInput  placeholder="Primary Contact Number" formControlName="primaryContactNumber">
+        <mat-error *ngIf="!loader && form.controls['primaryContactNumber']?.errors?.['required']">Primary Contact Number required</mat-error>
+        <mat-error *ngIf="!loader && form.controls['primaryContactNumber']?.errors?.['minlength']">Enter valid phone number(10 numbers)</mat-error>
+        <mat-error *ngIf="!loader && form.controls['primaryContactNumber']?.errors?.['pattern']">Enter valid phone number(10 numbers)</mat-error>
+      </mat-form-field>
+      <mat-form-field  appearance="outline">
+        <mat-label>Emergency Contact Number</mat-label>
+        <input matInput  placeholder="Emergency Contact Number" formControlName="emergencyContactNumber">
+        <mat-error *ngIf="!loader && form.controls['emergencyContactNumber']?.errors?.['required']">Emergency Contact Number required</mat-error>
+        <mat-error *ngIf="!loader && form.controls['emergencyContactNumber']?.errors?.['minlength']">Enter valid phone number(10 numbers)</mat-error>
+        <mat-error *ngIf="!loader && form.controls['emergencyContactNumber']?.errors?.['pattern']">Enter valid phone number(10 numbers)</mat-error>
+      </mat-form-field>
+      <mat-form-field  appearance="outline">
+        <mat-label>UserType</mat-label>
+        <mat-select formControlName="userType">
+          <mat-option *ngFor="let option of userT" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error >Password is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Confirm Password" [type]="hide1 ? 'password' : 'text'" formControlName="confirmPassword" required>
+        <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="!loader && form.controls['confirmPassword']?.errors?.['required']" >Confirm Password is required</mat-error>
+        <mat-error *ngIf="!loader && form.controls['confirmPassword']?.errors?.['matching']">Password dose not match</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Verification</mat-label>
+        <mat-select formControlName="isVertified">
+          <mat-option *ngFor="let option of veri" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+        <mat-error >Verification is required</mat-error>
+      </mat-form-field>
+      <br>
+    </div>
+    <div>
+      <button [ngStyle]="{'margin-top':'10px'}" type="submit" mat-raised-button color="warn">Register</button>
+      <button [ngStyle]="{'margin-top':'10px','margin-left':'20px'}" (click)="goBack()" mat-raised-button color="warn">Cancel</button>
+    </div>
+  </form>
+</div>

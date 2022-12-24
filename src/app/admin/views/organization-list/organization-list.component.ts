@@ -14,7 +14,7 @@ import loader from '@angular-devkit/build-angular/src/webpack/plugins/single-tes
 export class OrganizationListComponent implements OnInit {
 
   organizations: Organization[] = [];
-  displayedColumns = ["organizationName", "organizationType", "isApproved", "more","edit","delete"];
+  displayedColumns = ["organizationName", "organizationType", "isApproved","edit","delete"];
   loader: boolean = true;
 
   constructor(private http: HttpClient,private router: Router) {}

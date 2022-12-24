@@ -50,8 +50,8 @@ export class OrganizationEditComponent implements OnInit {
       userType:'',
       emailAddress:'',
       mobileNumber:'',
-      employeesWithPasses:''
-      // telNumber:'',
+      employeesWithPasses:'',
+      telNumber:'',
     });
   }
 

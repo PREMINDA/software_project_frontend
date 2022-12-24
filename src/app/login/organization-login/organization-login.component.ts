@@ -50,7 +50,9 @@ export class OrganizationLoginComponent implements OnInit {
         this.logResponse = res as OrganizationLoginResponse;
         this.auth.doLoginOrganization(this.logResponse);
         this.router.navigate(['']);
-      },(err:any)=>{this.errorMessage = err.message})
+      },(err:any)=>{this.errorMessage = err.message;
+        console.log(this.errorMessage);
+      })
     }
   }
 

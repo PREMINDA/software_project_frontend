@@ -7,7 +7,7 @@ export interface UserModal{
   "isVertified": string;
   "gender": string;
   "location": string;
-  "birthDate": string;
+  "birthDate": Date;
   "primaryContactNumber": string;
   "emergencyContactNumber": string;
   "userType": string;

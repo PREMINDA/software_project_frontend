@@ -20,6 +20,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { VaccinationCardComponent } from './components/vaccination-card/vaccination-card.component';
 import { PassCardComponent } from './components/pass-card/pass-card.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { PopWindowComponent } from './components/pop-window/pop-window.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -44,14 +47,17 @@ const modules = [
   MatInputModule,
   MatSnackBarModule,
   MatGridListModule,
+  MatPaginatorModule,
+  MatDialogModule,
 ];
 
 @NgModule({
-  declarations: [...components, ShellComponent, FooterComponent, HeaderComponent, SpinnerComponent, VaccinationCardComponent, PassCardComponent],
+  declarations: [...components, ShellComponent, FooterComponent, HeaderComponent, SpinnerComponent, VaccinationCardComponent, PassCardComponent, PopWindowComponent],
     imports: [
         CommonModule,
         ...modules,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+
     ],
   exports: [
     ...modules,
@@ -59,7 +65,8 @@ const modules = [
     HeaderComponent,
     SpinnerComponent,
     VaccinationCardComponent,
-    PassCardComponent
+    PassCardComponent,
+    MatPaginatorModule
   ],
 })
 export class SharedModule { }

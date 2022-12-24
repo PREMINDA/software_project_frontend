@@ -19,15 +19,15 @@
                 *matCellDef="let element"><mat-icon [ngStyle]="{margin:'0px 20px',color:element.isApproved?'green':'red'}">{{element.isApproved?"check":"close"}}</mat-icon></mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="more">
-      <mat-header-cell [ngClass]="'w-6'" *matHeaderCellDef>More</mat-header-cell>
-      <mat-cell [ngClass]="'w-6'" *matCellDef="let element">
-        <button style="bottom: 0rem" mat-icon-button color="primary" aria-label="Example icon button with a home icon"
-                (click)="selectOrganization(element)">
-          <mat-icon>more</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
+<!--    <ng-container matColumnDef="more">-->
+<!--      <mat-header-cell [ngClass]="'w-6'" *matHeaderCellDef>More</mat-header-cell>-->
+<!--      <mat-cell [ngClass]="'w-6'" *matCellDef="let element">-->
+<!--        <button style="bottom: 0rem" mat-icon-button color="primary" aria-label="Example icon button with a home icon"-->
+<!--                (click)="selectOrganization(element)">-->
+<!--          <mat-icon>more</mat-icon>-->
+<!--        </button>-->
+<!--      </mat-cell>-->
+<!--    </ng-container>-->
 
     <ng-container matColumnDef="edit">
       <mat-header-cell [ngClass]="'w-6'" *matHeaderCellDef>Edit</mat-header-cell>

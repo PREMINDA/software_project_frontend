@@ -33,7 +33,7 @@
       <mat-header-cell [ngClass]="'w-6'" *matHeaderCellDef>Delete</mat-header-cell>
       <mat-cell [ngClass]="'w-6'" *matCellDef="let element">
         <button style="bottom: 0rem" mat-icon-button color="primary" aria-label="Example icon button with a home icon"
-                (click)="openPreview(element)">
+                (click)="deleteUser(element)">
           <mat-icon class="icon-color">delete</mat-icon>
         </button>
       </mat-cell>

@@ -16,6 +16,9 @@ import { OrganizationEditComponent } from './views/organization-edit/organizatio
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
+import { CreateUserComponent } from './views/create-user/create-user.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -27,6 +30,7 @@ import {MatSelectModule} from '@angular/material/select';
     OrganizationListComponent,
     OrganizationDetailComponent,
     OrganizationEditComponent,
+    CreateUserComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +41,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class AdminModule { }

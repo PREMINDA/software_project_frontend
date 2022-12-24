@@ -17,14 +17,14 @@ export const sideManuConfigDataUser : SideMenuModal[] = [
     title: 'Users'
   },
   {
-    url:'/users',
-    icon: 'info',
-    title: 'About'
-  },
-  {
     url:'organization',
     icon: 'info',
     title: 'Organization'
+  },
+  {
+    url:'create-user',
+    icon: 'info',
+    title: 'Create Users'
   },
 ]
 
@@ -39,10 +39,5 @@ export const sideManuConfigDataOrg : SideMenuModal[] = [
     url:'users',
     icon: 'person',
     title: 'Users'
-  },
-  {
-    url:'organization',
-    icon: 'info',
-    title: 'Organization'
   },
 ]

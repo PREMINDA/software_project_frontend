@@ -9,10 +9,12 @@ import {UserDetailComponent} from '../admin/views/user-detail/user-detail.compon
 import {
   UserDetailViewOrganizationComponent
 } from './views/user-detail-view-organization/user-detail-view-organization.component';
+import {HomeComponent} from '../home/home.component';
 
 const routes: Routes = [
   {path:'',component:OrganizationDashoboardComponent,
     children:[
+      {path:'',component:HomeComponent},
       {path:'users',component:UserListViewOrganizationComponent},
       {path:'user-detail/:id', component: UserDetailViewOrganizationComponent },
     ]}

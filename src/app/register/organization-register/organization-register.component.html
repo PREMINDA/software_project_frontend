@@ -1,6 +1,7 @@
+<app-spinner *ngIf="loader"></app-spinner>
 <div [className]="'container'">
   <div [className]="'topic'"><h2>Organization Register</h2></div>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+  <form #formDirective="ngForm" [formGroup]="form" (ngSubmit)="onSubmit(formDirective)" >
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Organization Name</mat-label>
@@ -27,7 +28,7 @@
         <mat-form-field appearance="outline">
           <mat-label>District</mat-label>
           <mat-select formControlName="state">
-            <mat-option *ngFor="let district of districts" [value]="district">
+            <mat-option *ngFor="let district of dis" [value]="district">
               {{district}}
             </mat-option>
           </mat-select>
@@ -74,7 +75,6 @@
         <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-error *ngIf="!loader && form.controls['confirmPassword']?.errors?.['required']" >Confirm Password is required</mat-error>
         <mat-error *ngIf="!loader && form.controls['confirmPassword']?.errors?.['matching']">Password dose not match</mat-error>
-
       </mat-form-field>
       <div [className]="'button-div'">
         <button color="warn" mat-raised-button type="submit" class="login-button" >Register</button>
