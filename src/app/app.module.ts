@@ -8,11 +8,13 @@ import {SharedModule} from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component'
 import { NgxEchartsModule } from 'ngx-echarts';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
