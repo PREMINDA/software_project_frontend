@@ -48,7 +48,7 @@ export class UserLoginComponent implements OnInit {
       this.auth.login(loginData).subscribe(res=>{
         this.logResponse = res as LogResponse;
         this.auth.doLoginUser(this.logResponse);
-        this.router.navigate(['']);
+        this.router.navigate(['app/admin']);
       },(err:any)=>{this.errorMessage = err.message})
     }
   }

@@ -18,6 +18,7 @@ export class OrganizationLoginComponent implements OnInit {
   logResponse : OrganizationLoginResponse | undefined;
   errorMessage : string | undefined;
   error : string = '';
+  loader:boolean = false;
 
   constructor(private fb: FormBuilder,private auth : AuthService,private router: Router) {
     form: FormGroup;
@@ -47,11 +48,14 @@ export class OrganizationLoginComponent implements OnInit {
         emailAddress:this.email?.value,
         password:this.password?.value,
       }
+      this.loader = true;
       this.auth.loginOrg(loginData).subscribe(res=>{
         this.logResponse = res as OrganizationLoginResponse;
         this.auth.doLoginOrganization(this.logResponse);
-        this.router.navigate(['']);
+        this.loader = false;
+        this.router.navigate(['app/organization']);
       },(err:any)=>{this.errorMessage = err.message;
+        this.loader = false;
         this.error = err?.error?.message;
       })
     }
