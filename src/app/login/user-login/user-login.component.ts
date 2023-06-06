@@ -39,7 +39,6 @@ export class UserLoginComponent implements OnInit {
 
   async onSubmit() {
     this.loading = true;
-    this.loading = false;
     if(this.form.valid){
       const loginData:Login={
         nationalId:this.nic?.value,
@@ -48,8 +47,12 @@ export class UserLoginComponent implements OnInit {
       this.auth.login(loginData).subscribe(res=>{
         this.logResponse = res as LogResponse;
         this.auth.doLoginUser(this.logResponse);
+        this.loading = false;
         this.router.navigate(['app/admin']);
-      },(err:any)=>{this.errorMessage = err.message})
+      },(err:any)=>{
+        this.loading = false;
+        this.errorMessage = err.message})
+
     }
   }
 

@@ -90,6 +90,8 @@ export class OrganizationRegisterComponent implements OnInit {
       this.form.reset();
       formDirective.resetForm();
       this.loader = false;
+    },(err:any)=>{
+      this.loader = false;
     })
   }
 

@@ -44,6 +44,8 @@ export class OrganizationListComponent implements OnInit {
     this.loader = true;
     this.http.delete(`${config.organization}/Organization/${element.id}`).subscribe(res=>{
       this.fetchData();
+    },(err:any)=>{
+      this.loader = false;
     })
   }
 }
